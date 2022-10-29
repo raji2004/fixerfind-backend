@@ -1,5 +1,5 @@
 const User = require("../models/user");
-const { validateMail, validatelength } = require("../helpers/validation");
+const { validateMail, validatelength,Mailer,randNum } = require("../helpers/validation");
 
 exports.register = async (req, res) => {
   try {
@@ -15,11 +15,18 @@ exports.register = async (req, res) => {
     if (!validatelength(phone_no, 11)) {
       return res.status(400).json({ message: "phone number is incorrect" });
     }
+    try{
+      const num = randNum()
+     Mailer(email,email,num)
+    }catch (e){
+      res.status(400).json({message: e.message})
+    }
     const user = await new User({
       email,
       phone_no,
       password,
     }).save();
+
 
     res.send({
       email: user.email,
