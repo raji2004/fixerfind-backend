@@ -1,0 +1,6 @@
+PORT = 8080
+
+Database_URL=mongodb uri goes here
+
+BASE_URL= http://localhost:3000
+EMAIL= email goes here
