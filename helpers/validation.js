@@ -30,9 +30,8 @@ exports.Mailer = async (name, email, pin) => {
   };
   try {
     await transporter.sendMail(mailOption);
-    return Promise.resolve("Message Sent Successfully!");
   } catch (error) {
-    return Promise.reject(error);
+    return error.message;
   }
 };
 

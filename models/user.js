@@ -1,3 +1,4 @@
+const { Timestamp } = require("mongodb");
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
@@ -29,6 +30,17 @@ const userSchema = mongoose.Schema({
     default: "Nigeria",
     trim: true,
     text: true,
+  },
+  verified:{
+    type: Boolean,
+    default: false
+  },
+  info:{
+    code:{
+      type: String,
+      text: true,
+      trim: true,
+    }
   },
   description: {
     type: String,
