@@ -34,6 +34,29 @@ exports.Mailer = async (name, email, pin) => {
     return error.message;
   }
 };
+exports.Success = async (name, email) => {
+  const transportr = await nodeMail.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASS,
+    },
+  });
+  const mailOptio = {
+    from: process.env.GMAIL_USER,
+    to: email,
+    subject: "Fixer Find auth",
+    html: `Hey ${name} you have successfully join fixerfind congratulations!
+     `,
+  };
+  try {
+    await transportr.sendMail(mailOptio);
+  } catch (error) {
+    return error.message;
+  }
+};
 
 exports.randNum = () => {
   return Math.floor(1000 + Math.random() * 9000);

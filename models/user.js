@@ -2,6 +2,11 @@ const { Timestamp } = require("mongodb");
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
+  id: {
+    type: String,
+    trim: true,
+    text: true,
+  },
   name: {
     type: String,
     default: "Hello stranger",
@@ -17,6 +22,7 @@ const userSchema = mongoose.Schema({
     required: [true, "email is required"],
     trim: true,
     text: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -31,16 +37,17 @@ const userSchema = mongoose.Schema({
     trim: true,
     text: true,
   },
-  verified:{
+  verified: {
     type: Boolean,
-    default: false
+    default: false,
   },
-  info:{
-    code:{
+  info: {
+    code: {
       type: String,
       text: true,
       trim: true,
-    }
+      unique:true,
+    },
   },
   description: {
     type: String,

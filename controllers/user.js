@@ -1,9 +1,11 @@
 const User = require("../models/user");
+const uniqid= require("uniqid");
 const {
   validateMail,
   validatelength,
   Mailer,
   randNum,
+  Success,
 } = require("../helpers/validation");
 
 exports.register = async (req, res) => {
@@ -21,17 +23,9 @@ exports.register = async (req, res) => {
     if (!validatelength(phone_no, 11)) {
       return res.status(400).json({ message: "phone number is incorrect" });
     }
-    let code = randNum();
-    while (so) {
-      const some = await User.findOne({ code });
-      if (some) {
-        code = randNum();
-        so = false;
-      } else {
-        so = false;
-      }
-    }
-    const num = code;
+
+    const num = randNum();
+    const id = uniqid();
 
     try {
       Mailer(email, email, num);
@@ -39,6 +33,7 @@ exports.register = async (req, res) => {
       res.status(400).json({ message: e.message });
     }
     const user = await new User({
+      id,
       email,
       phone_no,
       password,
@@ -48,6 +43,7 @@ exports.register = async (req, res) => {
     }).save();
 
     res.send({
+      id: user.id,
       email: user.email,
       phone_no: user.phone_no,
       password: user.password,
@@ -61,20 +57,21 @@ exports.register = async (req, res) => {
 exports.validate = async (req, res) => {
   try {
     const { code } = req.body;
-    const pin = await User.findOne({ code });
-    let { info, verified } = pin;
-   
-   
-    if (pin) {
+    const user = await User.findOne({ info: { code } });
+    let { info, verified, id } = user;
+
+    if (user) {
       verified = true;
+      if (verified) {
+        const newuser = await User.findOneAndUpdate(
+          { id },
+          { $unset: { info }, verified }
+        );
+        res.send({ newuser });
+      }
     } else {
       res.status(400).json({ message: "pin is wrong" });
     }
-    if ((verified = true)) {
-      
-      await User.updateOne({ $unset:{info}, verified });
-    }
-    res.send("success!");
   } catch (e) {
     return res.status(500).json({ message: e.message });
   }
