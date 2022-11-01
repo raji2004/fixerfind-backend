@@ -41,14 +41,17 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  info: {
-    code: {
-      type: String,
-      text: true,
-      trim: true,
-      unique:true,
-    },
+
+  code: {
+    type: String,
+    text: true,
+    trim: true,
+    unique: true,
   },
+time:{
+  type: String,
+  
+}
   description: {
     type: String,
     default: "tell the community about yourself",

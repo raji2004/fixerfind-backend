@@ -1,5 +1,5 @@
 const User = require("../models/user");
-const uniqid= require("uniqid");
+const uniqid = require("uniqid");
 const {
   validateMail,
   validatelength,
@@ -37,9 +37,8 @@ exports.register = async (req, res) => {
       email,
       phone_no,
       password,
-      info: {
-        code: num.toString(),
-      },
+      code: num.toString(),
+      time: new Date().getTime()
     }).save();
 
     res.send({
@@ -56,16 +55,18 @@ exports.register = async (req, res) => {
 
 exports.validate = async (req, res) => {
   try {
-    const { code } = req.body;
-    const user = await User.findOne({ info: { code } });
-    let { info, verified, id } = user;
+    const { cod } = req.body;
+    const user = await User.findOne({ code: cod });
+
+    console.log(user);
+    let { code, verified, id } = user;
 
     if (user) {
       verified = true;
       if (verified) {
         const newuser = await User.findOneAndUpdate(
           { id },
-          { $unset: { info }, verified }
+          { $unset: { code }, verified }
         );
         res.send({ newuser });
       }
@@ -74,5 +75,23 @@ exports.validate = async (req, res) => {
     }
   } catch (e) {
     return res.status(500).json({ message: e.message });
+  }
+};
+
+exports.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email, password });
+    const { verified } = user;
+    if (user) {
+      verified
+        ? res.send({ message: "login successful" })
+        : res.send({ message: "please verify your account" });
+      res.send({ user });
+    } else {
+      res.status(400).json({ message: "email or password is incorrect" });
+    }
+  } catch (e) {
+    res.status(500).json({ message: e.message });
   }
 };
