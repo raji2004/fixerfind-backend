@@ -51,7 +51,7 @@ const userSchema = mongoose.Schema({
 time:{
   type: String,
   
-}
+},
   description: {
     type: String,
     default: "tell the community about yourself",

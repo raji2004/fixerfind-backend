@@ -58,23 +58,44 @@ exports.validate = async (req, res) => {
     const { cod } = req.body;
     const user = await User.findOne({ code: cod });
 
-    console.log(user);
-    let { code, verified, id } = user;
+    // console.log(user);
+    let { code, verified, id,time,email } = user;
+    const exp = Number(time) + 18000000
+    const currenttime = new Date().getTime()
 
     if (user) {
-      verified = true;
-      if (verified) {
-        const newuser = await User.findOneAndUpdate(
-          { id },
-          { $unset: { code }, verified }
-        );
-        res.send({ newuser });
+      if(currenttime >= exp){
+        res.status(400).json({message: "your pin has expired pls get a new one"})
+        try {
+          const num = randNum();
+          Mailer(email, email, num);
+          code = num
+          time = currenttime
+          const newuser = await User.findOneAndUpdate(
+            { id },
+            {  code,time,verified })
+          
+        } catch (e) {
+         console.log(e.message)
+         return e.message
+        }
+    }
+      else{
+      
+        verified = true;
+        if (verified) {
+          const newuser = await User.findOneAndUpdate(
+            { id },
+            { $unset: { code,time },verified }
+          );
+          res.send({ newuser });
+        }
       }
     } else {
       res.status(400).json({ message: "pin is wrong" });
     }
   } catch (e) {
-    return res.status(500).json({ message: e.message });
+    return res.status(500).json({ message:"your verification pin is incorrect" });
   }
 };
 
