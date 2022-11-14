@@ -5,7 +5,6 @@ const {
   validatelength,
   Mailer,
   randNum,
-  Success,
 } = require("../helpers/validation");
 
 exports.register = async (req, res) => {
