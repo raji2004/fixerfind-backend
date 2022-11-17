@@ -11,9 +11,9 @@ exports.register = async (req, res) => {
   let so = true;
   try {
     const { email, phone_no, password } = req.body;
-    if (!validateMail(email)) {
-      return res.status(400).json({ message: "email is invalid" });
-    }
+    // if (!validateMail(email)) {
+    //   return res.status(400).json({ message: "email is invalid" });
+    // }
     const check = await User.findOne({ email });
     if (check) {
       return res.status(400).json({ message: "email already exist" });
