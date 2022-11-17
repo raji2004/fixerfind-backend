@@ -108,9 +108,9 @@ exports.login = async (req, res) => {
         ? res.send({ message: "login successful" })
         : res.send({ message: "please verify your account" });
 
-    } else {
-      res.status(400).json({ message: "email or password is incorrect" });
-    }
+    } //else {
+    //   res.status(400).json({ message: "email or password is incorrect" });
+    // }
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
