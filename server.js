@@ -10,8 +10,9 @@ dotenv.config();
 
 // request
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.get("/", (req, res) => {
+  res.header("Access-Control-Allow-Origin");
   res.send("welcome from home");
 });
 

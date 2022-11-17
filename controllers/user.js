@@ -8,6 +8,7 @@ const {
 } = require("../helpers/validation");
 
 exports.register = async (req, res) => {
+  res.header("Access-Control-Allow-Origin");
   let so = true;
   try {
     const { email, phone_no, password } = req.body;
