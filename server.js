@@ -1,6 +1,6 @@
 // dependencies
 const express = require("express");
-const cors = require("cors");
+// const cors = require("cors");
 const mongoose = require("mongoose");
 const { readdirSync } = require("fs");
 const dotenv = require("dotenv");
@@ -10,9 +10,9 @@ dotenv.config();
 
 // request
 app.use(express.json());
-app.use(cors({ origin: true, credentials: true }));
+// app.use(cors({ origin: true, credentials: true }));
 app.get("/", (req, res) => {
-  res.header("Access-Control-Allow-Origin");
+  // res.header("Access-Control-Allow-Origin");
   res.send("welcome from home");
 });
 
