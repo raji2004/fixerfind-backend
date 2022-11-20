@@ -96,5 +96,5 @@ exports.Success = async (name, email) => {
 };
 
 exports.randNum = () => {
-  return Math.floor(1000 + Math.random() * 9000);
+  return Math.floor(10000 + Math.random() * 90000);
 };
