@@ -13,15 +13,15 @@ exports.register = async (req, res) => {
   try {
     const { email, phone_no, password, confirm_password } = req.body;
     if (!validateMail(email)) {
-      return res.status(400).json({ message: "email is invalid" });
+      return res.status(400).json({ message: "Email is invalid" });
     }
     const check = await User.findOne({ email });
     if (check) {
-      return res.status(400).json({ message: "email already exist" });
+      return res.status(400).json({ message: "Email already registered" });
     }
 
-    if (!validatelength(phone_no, 11)) {
-      return res.status(400).json({ message: "phone number is incorrect" });
+    if (!validatelength(phone_no, 11 , 15)) {
+      return res.status(400).json({ message: "Phone number is invalid" });
     }
 
     const num = randNum();
@@ -59,13 +59,13 @@ exports.validate = async (req, res) => {
     const user = await User.findOne({ code: cod });
 
     // console.log(user);
-    let { code, verified, id,time,email } = user;
+    let { code, verified, id, time, email } = user;
     const exp = Number(time) + 18000000
     const currenttime = new Date().getTime()
 
     if (user) {
-      if(currenttime >= exp){
-        res.status(400).json({message: "your pin has expired pls get a new one"})
+      if (currenttime >= exp) {
+        res.status(400).json({ message: "Your pin has expired pls get a new one" })
         try {
           const num = randNum();
           Mailer(email, email, num);
@@ -73,20 +73,20 @@ exports.validate = async (req, res) => {
           time = currenttime
           const newuser = await User.findOneAndUpdate(
             { id },
-            {  code,time,verified })
-          
+            { code, time, verified })
+
         } catch (e) {
-         console.log(e.message)
-         return e.message
+          console.log(e.message)
+          return e.message
         }
-    }
-      else{
-      
+      }
+      else {
+
         verified = true;
         if (verified) {
           const newuser = await User.findOneAndUpdate(
             { id },
-            { $unset: { code,time },verified }
+            { $unset: { code, time }, verified }
           );
           res.send({ newuser });
         }
@@ -95,7 +95,7 @@ exports.validate = async (req, res) => {
       res.status(400).json({ message: "pin is wrong" });
     }
   } catch (e) {
-    return res.status(500).json({ message:"your verification pin is incorrect" });
+    return res.status(500).json({ message: "Your verification pin is incorrect" });
   }
 };
 
@@ -106,13 +106,13 @@ exports.login = async (req, res) => {
     const { verified } = user;
     if (user) {
       verified
-        ? res.send({ user})
-        : res.send({ message: "please verify your account" });
+        ? res.send({ user })
+        : res.send({ message: "Please verify your account" });
 
-     }//else {
-  //     res.status(400).json({ message: "email or password is incorrect" });
-  //  }
+    }//else {
+    //     res.status(400).json({ message: "email or password is incorrect" });
+    //  }
   } catch (e) {
-    res.status(400).json({ message: "email or password is incorrect" });;
+    res.status(400).json({ message: "Email or password is incorrect" });;
   }
 };

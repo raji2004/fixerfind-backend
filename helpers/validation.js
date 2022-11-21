@@ -5,10 +5,10 @@ exports.validateMail = (email) => {
     .toLowerCase()
     .match(/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,12})(\.[a-z]{2,12})?$/);
 };
-exports.validatelength = (number, m) => {
+exports.validatelength = (number, min,max) => {
   //   console.log(String(number).length);
   //   console.log(number)
-  return String(number).length === m ? true : false;
+  return String(number).length >= min &&  String(number).length <= max ? true : false;
 };
 exports.Mailer = async (name, email, pin) => {
   const transporter = await nodeMail.createTransport({

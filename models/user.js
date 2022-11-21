@@ -7,9 +7,15 @@ const userSchema = mongoose.Schema({
     trim: true,
     text: true,
   },
-  name: {
+  Firstname: {
     type: String,
-    default: "Hello stranger",
+    default: "FixerFinder",
+    trim: true,
+    text: true,
+  },
+  Lastname: {
+    type: String,
+    default: "....",
     trim: true,
     text: true,
   },
@@ -48,10 +54,10 @@ const userSchema = mongoose.Schema({
     trim: true,
     unique: true,
   },
-time:{
-  type: String,
-  
-},
+  time: {
+    type: String,
+
+  },
   description: {
     type: String,
     default: "tell the community about yourself",
