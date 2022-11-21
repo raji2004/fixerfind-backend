@@ -20,7 +20,7 @@ exports.register = async (req, res) => {
       return res.status(400).json({ message: "Email already registered" });
     }
 
-    if (!validatelength(phone_no, 11 , 15)) {
+    if (!validatelength(phone_no, 11, 15)) {
       return res.status(400).json({ message: "Phone number is invalid" });
     }
 
@@ -65,7 +65,7 @@ exports.validate = async (req, res) => {
 
     if (user) {
       if (currenttime >= exp) {
-        res.status(400).json({ message: "Your pin has expired pls get a new one" })
+        res.status(400).json({ message: "Your pin has expired check your mail a new one has been sent you" })
         try {
           const num = randNum();
           Mailer(email, email, num);
