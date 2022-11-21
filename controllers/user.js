@@ -106,7 +106,7 @@ exports.login = async (req, res) => {
     const { verified } = user;
     if (user) {
       verified
-        ? res.send({ message: "login successful" })
+        ? res.send({ user})
         : res.send({ message: "please verify your account" });
 
     } //else {
