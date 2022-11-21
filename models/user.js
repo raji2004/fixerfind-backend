@@ -15,7 +15,7 @@ const userSchema = mongoose.Schema({
   },
   Lastname: {
     type: String,
-    default: "....",
+    default: " ",
     trim: true,
     text: true,
   },
