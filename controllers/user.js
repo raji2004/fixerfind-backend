@@ -5,8 +5,9 @@ const {
   validatelength,
   Mailer,
   randNum,
+   reset
 } = require("../helpers/validation");
-const { findByIdAndUpdate } = require("../models/user");
+
 
 exports.register = async (req, res) => {
   // res.header("Access-Control-Allow-Origin");
@@ -125,7 +126,7 @@ exports.forgotpassword = async (req, res) => {
     const { email, id } = user
     const time = new Date().getTime()
     try {
-      Mailer(email, email, code)
+      reset(email, email, code)
       const newuser = await User.findOneAndUpdate(
         { id },
         { code, time }
@@ -141,11 +142,11 @@ exports.forgotpassword = async (req, res) => {
 
 }
 exports.resetpassword = async (req, res) => {
-  const {id,password } = req.body
-  const user = await User.findOneAndUpdate({id},{password})
-  if(user){
-    res.send({user})
-  }else {
-    res.status(400).json({message:"User not found"})
+  const { id, password } = req.body
+  const user = await User.findOneAndUpdate({ id }, { password })
+  if (user) {
+    res.send({ user })
+  } else {
+    res.status(400).json({ message: "User not found" })
   }
 }
