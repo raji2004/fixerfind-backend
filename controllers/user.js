@@ -6,6 +6,7 @@ const {
   Mailer,
   randNum,
 } = require("../helpers/validation");
+const { findByIdAndUpdate } = require("../models/user");
 
 exports.register = async (req, res) => {
   // res.header("Access-Control-Allow-Origin");
@@ -116,3 +117,35 @@ exports.login = async (req, res) => {
     res.status(400).json({ message: "Email or password is incorrect" });;
   }
 };
+exports.forgotpassword = async (req, res) => {
+  const { email } = req.body
+  const user = await User.findOne({ email })
+  if (user) {
+    const code = randNum();
+    const { email, id } = user
+    const time = new Date().getTime()
+    try {
+      Mailer(email, email, code)
+      const newuser = await User.findOneAndUpdate(
+        { id },
+        { code, time }
+      );
+      res.send({ email, id })
+    } catch (e) {
+      res.status(400).json({ message: e.message })
+    }
+
+  } else {
+    res.status(400).json({ message: "Email is not registered" })
+  }
+
+}
+exports.resetpassword = async (req, res) => {
+  const {id,password } = req.body
+  const user = await User.findOneAndUpdate({id},{password})
+  if(user){
+    res.send({user})
+  }else {
+    res.status(400).json({message:"User not found"})
+  }
+}
