@@ -21,7 +21,7 @@ exports.register = async (req, res) => {
     if (check) {
       return res.status(400).json({ message: "Email already registered" });
     }
-
+//no error
     if (!validatelength(phone_no, 11, 15)) {
       return res.status(400).json({ message: "Phone number is invalid" });
     }
