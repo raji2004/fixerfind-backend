@@ -5,7 +5,7 @@ const {
   validatelength,
   Mailer,
   randNum,
-   reset
+  reset
 } = require("../helpers/validation");
 
 
@@ -21,7 +21,7 @@ exports.register = async (req, res) => {
     if (check) {
       return res.status(400).json({ message: "Email already registered" });
     }
-//no error
+    //no error
     if (!validatelength(phone_no, 11, 15)) {
       return res.status(400).json({ message: "Phone number is invalid" });
     }
@@ -107,9 +107,14 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ email, password });
     const { verified } = user;
     if (user) {
-      verified
-        ? res.send({ user })
-        : res.status(400).json({ message: "Please verify your account" });
+      if (verified) { 
+        res.send({ user }) }else{
+         await User.findOneAndDelete({email})
+          res.status(400).json({ message: "Please verify your account" });
+        }
+
+
+    
 
     }//else {
     //     res.status(400).json({ message: "email or password is incorrect" });
