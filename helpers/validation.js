@@ -5,10 +5,10 @@ exports.validateMail = (email) => {
     .toLowerCase()
     .match(/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,12})(\.[a-z]{2,12})?$/);
 };
-exports.validatelength = (number, min,max) => {
+exports.validatelength = (number, min, max) => {
   //   console.log(String(number).length);
   //   console.log(number)
-  return String(number).length >= min &&  String(number).length <= max ? true : false;
+  return String(number).length >= min && String(number).length <= max ? true : false;
 };
 exports.Mailer = async (name, email, pin) => {
   const transporter = await nodeMail.createTransport({
@@ -98,21 +98,21 @@ exports.randNum = () => {
   return Math.floor(10000 + Math.random() * 90000);
 
 };
-exports.reset =  async (name, email, pin) => {
-    const transporter = await nodeMail.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASS,
-      },
-    });
-    const mailOption = {
-      from: process.env.GMAIL_USER,
-      to: email,
-      subject: `Reset-Password Verification Code`,
-      html: `<html lang="en">
+exports.reset = async (name, email, pin) => {
+  const transporter = await nodeMail.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASS,
+    },
+  });
+  const mailOption = {
+    from: process.env.GMAIL_USER,
+    to: email,
+    subject: `Reset-Password Verification Code`,
+    html: `<html lang="en">
       <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -153,9 +153,10 @@ exports.reset =  async (name, email, pin) => {
       </div>
       </footer>
       </html>`
-    };
-    try {
-      await transporter.sendMail(mailOption);
-    } catch (error) {
-      return error.message;
-    }};
+  };
+  try {
+    await transporter.sendMail(mailOption);
+  } catch (error) {
+    return error.message;
+  }
+};
