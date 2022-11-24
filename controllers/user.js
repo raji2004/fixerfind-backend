@@ -36,7 +36,7 @@ exports.register = async (req, res) => {
     }
     const user = await new User({
       id,
-      email,
+      email:email.toLowerCase(),
       phone_no,
       password,
       code: num.toString(),
@@ -104,7 +104,7 @@ exports.validate = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email, password });
+    const user = await User.findOne({ email:email.toLowerCase(), password });
     const { verified } = user;
     if (user) {
       if (verified) { 
@@ -125,7 +125,7 @@ exports.login = async (req, res) => {
 };
 exports.forgotpassword = async (req, res) => {
   const { email } = req.body
-  const user = await User.findOne({ email })
+  const user = await User.findOne({ email:email.toLowerCase() })
   if (user) {
     const code = randNum();
     const { email, id } = user
