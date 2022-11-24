@@ -109,7 +109,7 @@ exports.login = async (req, res) => {
     if (user) {
       if (verified) { 
         res.send({ user }) }else{
-         await User.findOneAndDelete({email})
+         await User.findOneAndDelete({emai:email.toLowerCase()})
           res.status(400).json({ message: "Please verify your account" });
         }
 
