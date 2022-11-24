@@ -17,7 +17,7 @@ exports.register = async (req, res) => {
     if (!validateMail(email)) {
       return res.status(400).json({ message: "Email is invalid" });
     }
-    const check = await User.findOne({ email });
+    const check = await User.findOne({ email:email.toLowerCase() });
     if (check) {
       return res.status(400).json({ message: "Email already registered" });
     }
