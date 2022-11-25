@@ -10,7 +10,7 @@ exports.validatelength = (number, min, max) => {
   //   console.log(number)
   return String(number).length >= min && String(number).length <= max ? true : false;
 };
-exports.Mailer = async (name, email, pin) => {
+exports.Mailer = async ( email, pin) => {
   const transporter = await nodeMail.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -69,7 +69,7 @@ exports.Mailer = async (name, email, pin) => {
     return error.message;
   }
 };
-exports.Success = async (name, email) => {
+exports.Success = async ( email) => {
   const transportr = await nodeMail.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -139,7 +139,7 @@ exports.randNum = () => {
   return Math.floor(10000 + Math.random() * 90000);
 
 };
-exports.reset = async (name, email, pin) => {
+exports.reset = async ( email, pin) => {
   const transporter = await nodeMail.createTransport({
     host: "smtp.gmail.com",
     port: 465,

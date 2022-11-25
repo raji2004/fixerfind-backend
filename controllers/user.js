@@ -31,7 +31,7 @@ exports.register = async (req, res) => {
     const id = uniqid();
 
     try {
-      Mailer(email, email, num);
+      Mailer( email, num);
     } catch (e) {
       res.status(400).json({ message: e.message });
     }
@@ -71,7 +71,7 @@ exports.validate = async (req, res) => {
         res.status(400).json({ message: "Your pin has expired check your mail a new one has been sent you" })
         try {
           const num = randNum();
-          Mailer(email, email, num);
+          Mailer( email, num);
           code = num
           time = currenttime
           const newuser = await User.findOneAndUpdate(
@@ -91,7 +91,7 @@ exports.validate = async (req, res) => {
             { id },
             { $unset: { code, time }, verified }
           );
-          Success()
+          Success(email)
           res.send({ newuser });
         }
       }
@@ -135,7 +135,7 @@ exports.forgotpassword = async (req, res) => {
     const { email, id } = user
     const time = new Date().getTime()
     try {
-      reset(email, email, code)
+      reset( email, code)
       const newuser = await User.findOneAndUpdate(
         { id },
         { code, time }
