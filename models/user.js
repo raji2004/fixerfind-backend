@@ -60,7 +60,7 @@ const userSchema = mongoose.Schema({
   },
   description: {
     type: String,
-    default: "tell the community about yourself",
+    default: "👋Welcome! Tell the community a little about yourself",
     trim: true,
     text: true,
   },
