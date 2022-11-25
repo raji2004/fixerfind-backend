@@ -107,13 +107,13 @@ exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email:email.toLowerCase(), password });
-    const { verified } = user;
+    const { verified,id } = user;
     if (user) {
       if (verified) { 
         res.send({ user })
       
       }else{
-         await User.findOneAndDelete({emai:email.toLowerCase()})
+         await User.findOneAndDelete({id})
           res.status(400).json({ message: "Please verify your account" });
         }
 
