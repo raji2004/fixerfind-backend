@@ -24,15 +24,7 @@ exports.Mailer = async ( email, pin) => {
     from: process.env.EMAIL,
     to: email,
     subject: `Registration Code`,
-    html: `<html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RegVerification Code</title>
-    <style>body{font-size:18px;background-color:#fff}.msg-textcon{display:flex;flex-direction:column;justify-content:center;align-items:center}.msg-textcon2{display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;padding:10%;height:auto}.company-name{font-family:"Arciform",'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-weight:300;margin-left:25px;transform:translateY(-100%);color:dodgerblue}#msg-logo{height:140px;width:200px;margin-left:20px;margin-top:20px}.msg-textheader{color:blue;font-family:Georgia,'Times New Roman',Times,serif}@font-face{font-family:"arciform";src:url("./Fonts/Arciform.ttf") format("truetype")}.tag{font-family:"Arciform",'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-weight:300}#msg-pic{margin-top:50px;width:30vw;border-radius:10px;box-shadow:.1px .5px #eee;opacity:.9}#msg-link{text-decoration:none}footer{background-color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center}.footer-body{padding:20px}.footer-text{font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px}@media(min-width:601px){.msg-textcon2{margin-left:100px;margin-right:100px}}@media(max-width:500px){body{font-size:15px}.msg-textheader{font-size:larger}.msg-textcon2{margin-left:20px;margin-right:20px;padding-top:20%;padding-bottom:15%}#msg-pic{margin-top:20px;width:70vw;border-radius:10px;box-shadow:.1px .5px #eee;opacity:.9}}</style>
-    </head>
-    <body>
+    html: `
     <div class="msg-body">
     <div class="msg-logocon">
     <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" id="msg-logo">
@@ -60,8 +52,7 @@ exports.Mailer = async ( email, pin) => {
     <div class="footer-text"><a href="mailto:info@fixerfind.co">info@fixerfind.co</a>| 07063455750</div>
     </div>
     </footer>
-    </body>
-    </html>`
+    `
   };
   try {
     await transporter.sendMail(mailOption);
@@ -83,15 +74,7 @@ exports.Success = async ( email) => {
     from: process.env.EMAIL,
     to: email,
     subject: "Fixer find team",
-    html: `<html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Email</title>
-    <style>body{background-color:#fff;font-size:18px}.msg-textcon{display:flex;flex-direction:column;justify-content:center;align-items:center}.msg-textcon2{display:flex;flex-direction:column;justify-content:center;align-items:center;color:#eee;background-color:dodgerblue;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;padding:10%;height:auto;border-radius:20px;box-shadow:.5px 2px 2px 0 #404040}.company-name{font-family:"Arciform",'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-weight:300;margin-left:25px;transform:translateY(-100%);color:dodgerblue}#msg-logo{height:140px;width:200px;margin-left:20px;margin-top:20px}.msg-textheader{color:blue;font-family:Georgia,'Times New Roman',Times,serif}@font-face{font-family:"arciform";src:url("./Fonts/Arciform.ttf") format("truetype")}.tag{font-family:"Arciform",'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-weight:300}#msg-pic{margin-top:50px;width:30vw;border-radius:10px;box-shadow:.1px .5px #eee;opacity:.9}#msg-link{color:#002;text-decoration:none}footer{display:flex;flex-direction:column;justify-content:center;align-items:center}.footer-body{padding:20px}.footer-text{font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px}@media(min-width:601px){.msg-textcon2{margin-left:100px;margin-right:100px}}@media(max-width:500px){body{font-size:15px}.msg-textheader{font-size:larger}.msg-textcon2{margin-left:20px;margin-right:20px;padding-top:20%;padding-bottom:15%}#msg-pic{margin-top:20px;width:70vw;border-radius:10px;box-shadow:.1px .5px #eee;opacity:.9}}</style>
-    </head>
-    <body>
+    html: `
     <div class="msg-body">
     <div class="msg-logocon">
     <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" id="msg-logo">
@@ -116,7 +99,6 @@ exports.Success = async ( email) => {
     </div>
     </div>
     </div>
-    </body>
     <hr />
     <footer>
     <div class="footer-body">
@@ -126,7 +108,7 @@ exports.Success = async ( email) => {
     <div class="footer-text"><a href="mailto:info@fixerfind.co">info@fixerfind.co</a>| 07063455750</div>
     </div>
     </footer>
-    </html>`,
+    `,
   };
   try {
     await transportr.sendMail(mailOptio);
@@ -153,15 +135,7 @@ exports.reset = async ( email, pin) => {
     from: process.env.EMAIL,
     to: email,
     subject: `Reset-Password Verification Code`,
-    html: `<html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ResetPasswordVerification Code</title>
-    <style>body{font-size:18px;background-color:#fff}.msg-textcon{display:flex;flex-direction:column;justify-content:center;align-items:center}.msg-textcon2{display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;padding:10%;height:auto}.company-name{font-family:"Arciform",'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-weight:300;margin-left:25px;transform:translateY(-100%);color:dodgerblue}#msg-logo{height:140px;width:200px;margin-left:20px;margin-top:20px}.msg-textheader{color:blue;font-family:Georgia,'Times New Roman',Times,serif}@font-face{font-family:"arciform";src:url("./Fonts/Arciform.ttf") format("truetype")}.tag{font-family:"Arciform",'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-weight:300}#msg-pic{margin-top:50px;width:30vw;border-radius:10px;box-shadow:.1px .5px #eee;opacity:.9}#msg-link{text-decoration:none}footer{background-color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center}.footer-body{padding:20px}.footer-text{font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px}@media(min-width:601px){.msg-textcon2{margin-left:100px;margin-right:100px}}@media(max-width:500px){body{font-size:15px}.msg-textheader{font-size:larger}.msg-textcon2{margin-left:20px;margin-right:20px;padding-top:20%;padding-bottom:15%}#msg-pic{margin-top:20px;width:70vw;border-radius:10px;box-shadow:.1px .5px #eee;opacity:.9}}</style>
-    </head>
-    <body>
+    html: `
     <div class="msg-body">
     <div class="msg-logocon">
     <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" id="msg-logo">
@@ -191,8 +165,7 @@ exports.reset = async ( email, pin) => {
     <div class="footer-text"><a href="mailto:info@fixerfind.co">info@fixerfind.co</a>| 07063455750</div>
     </div>
     </footer>
-    </body>
-    </html>`
+   `
   };
   try {
     await transporter.sendMail(mailOption);
