@@ -21,7 +21,7 @@ exports.Mailer = async (name, email, pin) => {
     },
   });
   const mailOption = {
-    from: process.env.GMAIL_USER,
+    from: process.env.EMAIL,
     to: email,
     subject: `Registration Code`,
     html: `<html lang="en">
@@ -80,7 +80,7 @@ exports.Success = async (name, email) => {
     },
   });
   const mailOptio = {
-    from: process.env.GMAIL_USER,
+    from: process.env.EMAIL,
     to: email,
     subject: "Fixer find team",
     html: `<html lang="en">
@@ -150,7 +150,7 @@ exports.reset = async (name, email, pin) => {
     },
   });
   const mailOption = {
-    from: process.env.GMAIL_USER,
+    from: process.env.EMAIL,
     to: email,
     subject: `Reset-Password Verification Code`,
     html: `<html lang="en">
