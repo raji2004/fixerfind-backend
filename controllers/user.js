@@ -5,7 +5,8 @@ const {
   validatelength,
   Mailer,
   randNum,
-  reset
+  reset,
+  Success
 } = require("../helpers/validation");
 
 
@@ -90,6 +91,7 @@ exports.validate = async (req, res) => {
             { id },
             { $unset: { code, time }, verified }
           );
+          Success()
           res.send({ newuser });
         }
       }
@@ -108,7 +110,9 @@ exports.login = async (req, res) => {
     const { verified } = user;
     if (user) {
       if (verified) { 
-        res.send({ user }) }else{
+        res.send({ user })
+      
+      }else{
          await User.findOneAndDelete({emai:email.toLowerCase()})
           res.status(400).json({ message: "Please verify your account" });
         }
