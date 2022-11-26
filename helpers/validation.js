@@ -24,7 +24,7 @@ exports.Mailer = async ( email, pin) => {
     from: process.env.EMAIL,
     to: email,
     subject: `Registration Code`,
-    html: `<body style="font-size:15px;background-color:#fff">
+    html: `
     <div>
     <div>
     <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" style="height:140px;width:200px;margin-left:20px;margin-top:20px">
@@ -43,7 +43,6 @@ exports.Mailer = async ( email, pin) => {
     </div>
     </div>
     </div>
-    </body>
     <hr />
     <footer style="background-color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center">
     <div style="padding:20px">
@@ -140,7 +139,6 @@ exports.reset = async ( email, pin) => {
     to: email,
     subject: `Reset-Password Verification Code`,
     html: `
-    <body style="font-size:15px;background-color:#fff">
     <div>
     <div>
     <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" style="height:140px;width:200px;margin-left:20px;margin-top:20px">
@@ -161,7 +159,6 @@ exports.reset = async ( email, pin) => {
     </div>
     </div>
     </div>
-    </body>
     <hr />
     <footer style="background-color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center">
     <div style="padding:20px">`
