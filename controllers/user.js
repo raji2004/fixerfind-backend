@@ -1,3 +1,4 @@
+//modules
 const User = require("../models/user");
 const uniqid = require("uniqid");
 const {
@@ -9,9 +10,9 @@ const {
   Success
 } = require("../helpers/validation");
 
-
+// regiter api
 exports.register = async (req, res) => {
-  // res.header("Access-Control-Allow-Origin");
+ 
   let so = true;
   try {
     const { email, phone_no, password, confirm_password } = req.body;
@@ -22,7 +23,7 @@ exports.register = async (req, res) => {
     if (check) {
       return res.status(400).json({ message: "Email already registered" });
     }
-    //no error
+   
     if (!validatelength(phone_no, 11, 15)) {
       return res.status(400).json({ message: "Phone number is invalid" });
     }
@@ -52,16 +53,15 @@ exports.register = async (req, res) => {
     });
   } catch (e) {
     res.status(500).json({ message: e.message });
-    // console.log(e);
+   
   }
 };
-
+// validate api
 exports.validate = async (req, res) => {
   try {
     const { cod } = req.body;
     const user = await User.findOne({ code: cod });
 
-    // console.log(user);
     let { code, verified, id, time, email } = user;
     const exp = Number(time) + 18000000
     const currenttime = new Date().getTime()
@@ -102,7 +102,7 @@ exports.validate = async (req, res) => {
     return res.status(500).json({ message: "Your verification pin is incorrect" });
   }
 };
-
+// login
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -120,13 +120,12 @@ exports.login = async (req, res) => {
 
     
 
-    }//else {
-    //     res.status(400).json({ message: "email or password is incorrect" });
-    //  }
+    }
   } catch (e) {
     res.status(400).json({ message: "Email or password is incorrect" });;
   }
 };
+//forgot password
 exports.forgotpassword = async (req, res) => {
   const { email } = req.body
   const user = await User.findOne({ email:email.toLowerCase() })
@@ -150,6 +149,9 @@ exports.forgotpassword = async (req, res) => {
   }
 
 }
+
+
+// reset password
 exports.resetpassword = async (req, res) => {
   const { id, password } = req.body
   const user = await User.findOneAndUpdate({ id }, { password })

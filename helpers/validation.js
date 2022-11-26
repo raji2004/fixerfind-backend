@@ -25,6 +25,7 @@ exports.Mailer = async ( email, pin) => {
     to: email,
     subject: `Registration Code`,
     html: `
+    <div style='background-color: #fff;'>
     <div class="msg-body">
     <div class="msg-logocon">
     <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" id="msg-logo">
@@ -52,6 +53,7 @@ exports.Mailer = async ( email, pin) => {
     <div class="footer-text"><a href="mailto:info@fixerfind.co">info@fixerfind.co</a>| 07063455750</div>
     </div>
     </footer>
+    </div>
     `
   };
   try {
@@ -75,7 +77,7 @@ exports.Success = async ( email) => {
     to: email,
     subject: "Fixer find team",
     html: `
-    <div class="msg-body">
+    <div class="msg-body" style='background-color: blue;'>
     <div class="msg-logocon">
     <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" id="msg-logo">
     </div>
@@ -136,7 +138,8 @@ exports.reset = async ( email, pin) => {
     to: email,
     subject: `Reset-Password Verification Code`,
     html: `
-    <div class="msg-body">
+    <div style='background-color: white;'>
+    <div class="msg-body" style='background-color: #fff;'>
     <div class="msg-logocon">
     <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" id="msg-logo">
     </div>
@@ -165,6 +168,7 @@ exports.reset = async ( email, pin) => {
     <div class="footer-text"><a href="mailto:info@fixerfind.co">info@fixerfind.co</a>| 07063455750</div>
     </div>
     </footer>
+    </div>
    `
   };
   try {
