@@ -135,7 +135,7 @@ exports.forgotpassword = async (req, res) => {
     const { email, id } = user
     const time = new Date().getTime()
     try {
-      reset( email, code)
+     await reset( email, code)
       const newuser = await User.findOneAndUpdate(
         { id },
         { code, time }
