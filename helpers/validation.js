@@ -171,20 +171,21 @@ exports.reset = async (email, pin) => {
     </div>
     </div>
     <hr />
-    <footer style="background-color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center">
-    <div style="padding:20px">
-    <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">Copyright <span>&#169;</span> Alvaindes Limited. All Rights Reserved.</div>
-    <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">
-    To stop recieving messages from us, you can change your notification settings.
-    </div>
-    <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">
-    <a href="mailto:info@fixerfind.co">info@fixerfind.co</a>|
-    <a href="tel:+234-706-345-5750">07063455750</a>
-    </div>
-    </div>
-    </footer>
-    </div>
-`  };
+   </div>
+   <footer style="background-color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center">
+   <div style="padding:20px">
+   <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">Copyright <span>&#169;</span> Alvaindes Limited. All Rights Reserved.</div>
+   <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">
+   To stop recieving messages from us, you can change your notification settings.
+   </div>
+   <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">
+   <a href="mailto:info@fixerfind.co">info@fixerfind.co</a>|
+   <a href="tel:+234-706-345-5750">07063455750</a>
+   </div>
+   </div>
+   </footer>
+   
+    `  };
   try {
     await transporter.sendMail(mailOption);
   } catch (error) {
