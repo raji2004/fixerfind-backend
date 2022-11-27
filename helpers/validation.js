@@ -28,7 +28,10 @@ exports.Mailer = async (email, pin) => {
     <div style='background-color: #fff;'>
     <div class="msg-body">
     <div class="msg-logocon">
-    <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" id="msg-logo">
+    <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" style=" height: 140px;
+    width: 200px;
+    margin-left: 20px;
+    margin-top: 20px;">
     </div>
     <hr />
     <div class="msg-textcon">
