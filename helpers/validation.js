@@ -149,7 +149,7 @@ exports.reset = async (email, pin) => {
     to: email,
     subject: `Reset-Password Verification Code`,
     html: `
-    <div style="font-size:15px;background-color:#fff">
+    <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;font-size:15px;background-color:#fff">
     <div>
     <div>
     <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" id="msg-logo" style="height:140px;width:200px;margin-left:20px;margin-top:20px">
