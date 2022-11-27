@@ -156,7 +156,7 @@ exports.reset = async (email, pin) => {
     <hr />
     
     <div style="
-    padding:10px;height:auto">
+    padding:25px;height:auto">
     <h4>Hi FixerFinder,</h4>
     <p>Prove your the one, by using this OTP sent below before it expires in <span>10 minutes</span>, to
     complete your request to change your password.
