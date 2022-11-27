@@ -11,7 +11,7 @@ exports.getprofile = async(req,res)=>{
  res.send(user)
 };
 exports.changeprofile = (req,res)=>{
-console.log('changeprofile')
-res.send('changeprofile')
+  res.send('xhangeprofile')
+
 };
 

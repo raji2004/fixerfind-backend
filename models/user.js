@@ -47,7 +47,27 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
-
+  location: {
+    address: {
+      type: String,
+      text: true,
+      default: "",
+    },
+    country: {
+      type: String,
+      default: "Nigeria",
+    }
+  },
+  socials: {
+    instagram: {
+      type: String,
+      default: "",
+    },
+    twitter: {
+      type: String,
+      default: "",
+    }
+  },
   code: {
     type: String,
     text: true,
