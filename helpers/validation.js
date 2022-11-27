@@ -158,10 +158,10 @@ exports.reset = async (email, pin) => {
     <div style="display:flex;flex-direction:column;justify-content:center;align-items:center">
     <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;padding:10%;height:auto">
     <h4>Hi FixerFinder,</h4>
-    <p>Prove your the one, by using this OTP sent below before it expires at <span>12:32:21pm</span>, to
+    <p>Prove your the one, by using this OTP sent below before it expires in <span>10 minutes</span>, to
     complete your request to change your password.
     </p>
-    <p>PIN: <b>42901</b></p>
+    <p>PIN: <b>${pin}</b></p>
     <p>If you did not envoke this request, please ignore usage of the code sent, and
     let us know.</p>
     <p>If you have any questions, feel free to <a href="mailto:info@fixerfind.co" style="text-decoration:none">reach
