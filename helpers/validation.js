@@ -149,23 +149,22 @@ exports.reset = async (email, pin) => {
     to: email,
     subject: `Reset-Password Verification Code`,
     html: `
-   
     <div style="font-size:15px;background-color:#fff">
     <div>
-    <div  >
-    <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" id="msg-logo" style="height:140px;width:200px;margin-left:20px;margin-top:20px">
+    <div>
+    <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" style="height:140px;width:200px;margin-left:20px;margin-top:20px">
+    </div>
     <hr />
-    
-    <div style="display:flex;flex-direction: column;padding: 25px;
-    height:auto">
-    <h4 style="justify-self: center; align-self: center;">Hi FixerFinder,</h4>
-    <p style="justify-self: center; align-self: center;">Prove your the one, by using this OTP sent below before it expires in <span>10 minutes</span>, to
+    <div style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+    <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;padding:10%;height:auto">
+    <h4>Hi FixerFinder,</h4>
+    <p>Prove your the one, by using this OTP sent below before it expires at <span>12:32:21pm</span>, to
     complete your request to change your password.
     </p>
-    <p style="justify-self: center; align-self: center;">PIN: <b>${pin}</b></p>
-    <p style="justify-self: center; align-self: center;">If you did not envoke this request, please ignore usage of the code sent, and
+    <p>PIN: <b>42901</b></p>
+    <p>If you did not envoke this request, please ignore usage of the code sent, and
     let us know.</p>
-    <p style="justify-self: center; align-self: center;">If you have any questions, feel free to <a href="mailto:info@fixerfind.co" style="text-decoration:none">reach
+    <p>If you have any questions, feel free to <a href="mailto:info@fixerfind.co" style="text-decoration:none">reach
     out to us.</a>
     </p>
     </div>
@@ -173,18 +172,18 @@ exports.reset = async (email, pin) => {
     </div>
     </div>
     <hr />
-   <footer style="background-color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center">
-   <div style="padding:20px">
-   <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">Copyright <span>&#169;</span> Alvaindes Limited. All Rights Reserved.</div>
-   <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">
-   To stop recieving messages from us, you can change your notification settings.
-   </div>
-   <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">
-   <a href="mailto:info@fixerfind.co">info@fixerfind.co</a>|
-   <a href="tel:+234-706-345-5750">07063455750</a>
-   </div>
-   </div>
-   </footer>
+    <footer style="background-color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center">
+    <div style="padding:20px">
+    <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">Copyright <span>&#169;</span> Alvaindes Limited. All Rights Reserved.</div>
+    <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">
+    To stop recieving messages from us, you can change your notification settings.
+    </div>
+    <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">
+    <a href="mailto:info@fixerfind.co">info@fixerfind.co</a>|
+    <a href="tel:+234-706-345-5750">07063455750</a>
+    </div>
+    </div>
+    </footer>
    `  };
   try {
     await transporter.sendMail(mailOption);
