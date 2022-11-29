@@ -8,7 +8,7 @@ exports.getprofile = async(req,res)=>{
  const parsedurl= url.parse(req.url,true)
  const id = parsedurl.query
  const user = await User.findOne(id)
- user?res.status(200).json(user):res.status(404).json({message:"user not found"})
+ user?res.send(user):res.status(404).json({message:"user not found"})
  
 };
 
