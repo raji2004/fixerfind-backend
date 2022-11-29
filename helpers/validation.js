@@ -148,30 +148,35 @@ exports.reset = async (email, pin) => {
     from: process.env.EMAIL,
     to: email,
     subject: `Reset-Password Verification Code`,
-    html: `
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+    html: `<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
     <html lang="en">
     <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset-Password Verification Code</title>
     <style type="text/css">@media(max-width:600px){body{font-size:small}}</style>
     </head>
-    <body style="font-size:15px;background-color:#fff">
-    <div>
-    <div>
-    <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" style="height:140px;width:200px;margin-left:20px;margin-top:20px">
+    <body style="margin:0;padding:0;border:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background-color:#dbdada;font-size:larger;max-width:900px;margin:0 auto;padding:3%;text-align:center">
+    <div class="wrapper" style="margin:0;padding:0;border:0;padding:10%;background-color:#fff!important">
+    <header style="margin:0;padding:0;border:0;width:98%">
+    <div id="logo" style="margin:0;padding:0;border:0;max-width:120px;margin:3% 0 3% 3%;float:left">
+    <img src="../images/logo&name.jpeg" alt="FixerFind" style="margin:0;padding:0;border:0;max-width:100%" />
     </div>
-    <hr />
-    <div style="display:flex;flex-direction:column;justify-content:center;align-items:center">
-    <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;padding:10%;height:auto">
-    <h4>Hi FixerFinder,</h4>
-    <p>Prove your the one, by using this OTP sent below before it expires at <span>12:32:21pm</span>, to
+    </header>
+    <hr class="hr1" style="margin:0;padding:0;border:0;height:1px;background-color:#3038409c;clear:both;width:96%;margin:auto;margin-bottom:10%">
+    <div class="one-col" style="margin:0;padding:0;border:0">
+    <div class="space" style="margin:0;padding:0;border:0;margin:35px 0">
+    <h4 style="margin:0;padding:0;border:0;margin:5%">Hi FixerFinder,</h4>
+    </div>
+    <div class="space" style="margin:0;padding:0;border:0;margin:35px 0">
+    <p style="margin:0;padding:0;border:0;margin:5%">Prove your the one, by using this OTP sent below
+    before it expires in 10 minutes, to
     complete your request to change your password.
     </p>
     </div>
     <div class="space" style="margin:0;padding:0;border:0;margin:35px 0">
-    <p style="margin:0;padding:0;border:0;margin:5%">PIN: <b style="margin:0;padding:0;border:0">42901</b></p>
+    <p style="margin:0;padding:0;border:0;margin:5%">PIN: <b style="margin:0;padding:0;border:0">${pin}</b></p>
     </div>
     <div class="space" style="margin:0;padding:0;border:0;margin:35px 0">
     <p style="margin:0;padding:0;border:0;margin:5%">If you did not envoke this request, please ignore
@@ -204,20 +209,8 @@ exports.reset = async (email, pin) => {
     </div>
     </div>
     </body>
-    <hr />
-    <footer style="background-color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center">
-    <div style="padding:20px">
-    <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">Copyright <span>&#169;</span> Alvaindes Limited. All Rights Reserved.</div>
-    <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">
-    To stop recieving messages from us, you can change your notification settings.
-    </div>
-    <div style="font-size:small;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;margin:4px">
-    <a href="mailto:info@fixerfind.co">info@fixerfind.co</a>|
-    <a href="tel:+234-706-345-5750">07063455750</a>
-    </div>
-    </div>
-    </footer>
-    </html>`  };
+    </html>
+   `  };
   try {
     await transporter.sendMail(mailOption);
   } catch (error) {
