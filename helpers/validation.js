@@ -149,7 +149,15 @@ exports.reset = async (email, pin) => {
     to: email,
     subject: `Reset-Password Verification Code`,
     html: `
-    <div style="font-size:15px;background-color:#fff">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">@media(max-width:600px){body{font-size:small}}</style>
+    </head>
+    <body style="font-size:15px;background-color:#fff">
     <div>
     <div>
     <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo%26name.jpeg?alt=media&token=864d6233-e6bd-4183-99c5-2c4d40132a1b" alt="FixerFind" style="height:140px;width:200px;margin-left:20px;margin-top:20px">
@@ -158,19 +166,44 @@ exports.reset = async (email, pin) => {
     <div style="display:flex;flex-direction:column;justify-content:center;align-items:center">
     <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;padding:10%;height:auto">
     <h4>Hi FixerFinder,</h4>
-    <p>Prove your the one, by using this OTP sent below before it expires  <span>10 minutes</span>, to
+    <p>Prove your the one, by using this OTP sent below before it expires at <span>12:32:21pm</span>, to
     complete your request to change your password.
     </p>
-    <p>PIN: <b>${pin}</b></p>
-    <p>If you did not envoke this request, please ignore usage of the code sent, and
-    let us know.</p>
-    <p>If you have any questions, feel free to <a href="mailto:info@fixerfind.co" style="text-decoration:none">reach
+    </div>
+    <div class="space" style="margin:0;padding:0;border:0;margin:35px 0">
+    <p style="margin:0;padding:0;border:0;margin:5%">PIN: <b style="margin:0;padding:0;border:0">42901</b></p>
+    </div>
+    <div class="space" style="margin:0;padding:0;border:0;margin:35px 0">
+    <p style="margin:0;padding:0;border:0;margin:5%">If you did not envoke this request, please ignore
+    <br style="margin:0;padding:0;border:0">
+    usage of the code sent, and
+    let us know.
+    </p>
+    </div>
+    <div class="space" style="margin:0;padding:0;border:0;margin:35px 0">
+    <p style="margin:0;padding:0;border:0;margin:5%">If you have any questions, <br style="margin:0;padding:0;border:0">
+    feel free to <a href="mailto:info@fixerfind.co" style="margin:0;padding:0;border:0;text-decoration:none">reach
     out to us.</a>
     </p>
     </div>
+    <hr class="hr2" style="margin:0;padding:0;border:0;height:1px;background-color:#3038409c;clear:both;width:96%;margin:auto;margin-top:10%">
+    <footer style="margin:0;padding:0;border:0">
+    <div id="contact" style="margin:0;padding:0;border:0;text-align:center;padding-bottom:3%;line-height:16px;color:#303840;margin-top:3%;font-size:13px">
+    <div style="margin:0;padding:0;border:0">Copyright <span style="margin:0;padding:0;border:0">&#169;</span> Alvaindes Limited. <br style="margin:0;padding:0;border:0">
+    All Rights Reserved.</div>
+    <div style="margin:0;padding:0;border:0">
+    To stop recieving messages from us, <br style="margin:0;padding:0;border:0"> you can change
+    your notification settings.
+    </div>
+    <div style="margin:0;padding:0;border:0">
+    <a href="mailto:info@fixerfind.co" style="margin:0;padding:0;border:0">info@fixerfind.co</a>|
+    <a href="tel:+234-706-345-5750" style="margin:0;padding:0;border:0">07063455750</a>
     </div>
     </div>
+    </footer>
     </div>
+    </div>
+    </body>
     <hr />
     <footer style="background-color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center">
     <div style="padding:20px">
@@ -184,7 +217,7 @@ exports.reset = async (email, pin) => {
     </div>
     </div>
     </footer>
-   `  };
+    </html>`  };
   try {
     await transporter.sendMail(mailOption);
   } catch (error) {

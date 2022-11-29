@@ -37,12 +37,6 @@ const userSchema = mongoose.Schema({
     max: 12,
     text: true,
   },
-  country: {
-    type: String,
-    default: "Nigeria",
-    trim: true,
-    text: true,
-  },
   verified: {
     type: Boolean,
     default: false,
