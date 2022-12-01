@@ -72,6 +72,20 @@ const userSchema = mongoose.Schema({
     type: String,
 
   },
+  deleted:{
+    type: Boolean,
+    default: false,
+  },
+  serviceProvider:{
+    isPaid:{
+      type: Boolean,
+      default: false,
+    },
+    service:{
+      type: String,
+      default: "",
+    }
+  },
   description: {
     type: String,
     default: "👋Welcome! Tell the community a little about yourself",

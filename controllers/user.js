@@ -13,15 +13,22 @@ const {
 // regiter api
 exports.register = async (req, res) => {
  
-  let so = true;
+  
   try {
     const { email, phone_no, password, confirm_password } = req.body;
     if (!validateMail(email)) {
       return res.status(400).json({ message: "Email is invalid" });
     }
     const check = await User.findOne({ email:email.toLowerCase() });
+   
     if (check) {
-      return res.status(400).json({ message: "Email already registered" });
+      const {deleted,id} = check
+      if(deleted === true){
+        await User.findOneAndDelete(id)
+      }else{
+        return res.status(400).json({ message: "Email already registered" });
+      }
+    
     }
    
     if (!validatelength(phone_no, 11, 15)) {
@@ -107,8 +114,8 @@ exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email:email.toLowerCase(), password });
-    const { verified,id } = user;
-    if (user) {
+    const { verified,id, deleted} = user;
+    if (user && deleted === false) {
       if (verified) { 
         res.send({ user })
       
@@ -116,11 +123,9 @@ exports.login = async (req, res) => {
          await User.findOneAndDelete({id})
           res.status(400).json({ message: "Please verify your account" });
         }
-
-
-    
-
-    }
+   } else{
+    res.status(400).json({ message: "Email or password is incorrect" });
+   }
   } catch (e) {
     res.status(400).json({ message: "Email or password is incorrect" });;
   }
@@ -160,4 +165,10 @@ exports.resetpassword = async (req, res) => {
   } else {
     res.status(400).json({ message: "User not found" })
   }
+}
+
+exports.deleted = async (req,res)=>{
+  const {id} = req.body
+  const user = await User.findOneAndUpdate({id},{deleted:true})
+  user?res.send(user):res.status(404).json({message:"user not found"})
 }

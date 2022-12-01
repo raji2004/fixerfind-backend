@@ -8,7 +8,7 @@ exports.validateMail = (email) => {
 exports.validatelength = (number, min, max) => {
   //   console.log(String(number).length);
   //   console.log(number)
-  return String(number).length >= min && String(number).length <= max ? true : false;
+  return String(number).length >= min && String(number).length <= max;
 };
 exports.Mailer = async (email, pin) => {
   const transporter = await nodeMail.createTransport({
