@@ -60,6 +60,10 @@ const userSchema = mongoose.Schema({
     twitter: {
       type: String,
       default: "",
+    },
+    whatsapp: {
+      type: String,
+      default: "",
     }
   },
   code: {
