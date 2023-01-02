@@ -16,7 +16,7 @@ exports.changeprofile = async (req, res) => {
   const { id, Firstname, Lastname, email, phone_no, country, address, description, instagram, twitter } = req.body
   const location = { country, address }
   const socials = { instagram, twitter }
-  const data = { Firstname, Lastname, email: email.toLoweCase(), phone_no, location, description, socials }
+  const data = { Firstname, Lastname, email: email.toLowerCase(), phone_no, location, description, socials }
   const user = await User.findOneAndUpdate({ id }, data)
   user ? res.send(user) : res.status(404).json({ message: "user not found" })
 
