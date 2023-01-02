@@ -5,15 +5,14 @@ const mongoose = require("mongoose");
 const { readdirSync } = require("fs");
 const dotenv = require("dotenv");
 const app = express();
+console.log(readdirSync("./routes"))
 
 dotenv.config();
 
 // request
 app.use(express.json());
-// app.use(cors({ origin: true, credentials: true }));
 app.get("/", (req, res) => {
-  // res.header("Access-Control-Allow-Origin");
-  res.send("welcome from home");
+res.send("welcome from home");
 });
 
 // looping through folder to get routes

@@ -63,6 +63,8 @@ exports.register = async (req, res) => {
    
   }
 };
+// q: whats your name?
+
 // validate api
 exports.validate = async (req, res) => {
   try {
