@@ -41,31 +41,29 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  location: {
-    address: {
-      type: String,
-      text: true,
-      default: "",
-    },
-    country: {
-      type: String,
-      default: "Nigeria",
-    }
+  address: {
+    type: String,
+    text: true,
+    default: "",
   },
-  socials: {
-    instagram: {
-      type: String,
-      default: "",
-    },
-    twitter: {
-      type: String,
-      default: "",
-    },
-    whatsapp: {
-      type: String,
-      default: "",
-    }
+  country: {
+    type: String,
+    default: "Nigeria",
+  }
+  ,
+  instagram: {
+    type: String,
+    default: "",
   },
+  twitter: {
+    type: String,
+    default: "",
+  },
+  whatsapp: {
+    type: String,
+    default: "",
+  }
+  ,
   code: {
     type: String,
     text: true,
@@ -76,16 +74,16 @@ const userSchema = mongoose.Schema({
     type: String,
 
   },
-  deleted:{
+  deleted: {
     type: Boolean,
     default: false,
   },
-  serviceProvider:{
-    isPaid:{
+  serviceProvider: {
+    isPaid: {
       type: Boolean,
       default: false,
     },
-    service:{
+    service: {
       type: String,
       default: "",
     }
