@@ -78,6 +78,9 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  deletedtime:{
+    type:Object,
+  },
   serviceProvider: {
     isPaid: {
       type: Boolean,
