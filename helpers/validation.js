@@ -5,9 +5,15 @@ exports.validateMail = (email) => {
     .toLowerCase()
     .match(/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,12})(\.[a-z]{2,12})?$/);
 };
+exports.has31DaysPassed(date1, date2) {
+  const differenceInMilliseconds = date2 - date1;
+
+  // Convert the difference to days
+  const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+  return differenceInDays >= 31;
+};
+
 exports.validatelength = (number, min, max) => {
-  //   console.log(String(number).length);
-  //   console.log(number)
   return String(number).length >= min && String(number).length <= max;
 };
 exports.Mailer = async (email, pin) => {
