@@ -119,11 +119,12 @@ exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email.toLowerCase(), password });
-    const { verified, id, deleted, deletedtime } = user;
+    let { verified, id, deleted, deletedtime } = user;
     const todays = new Date()
     const timeRequested = new Date(deletedtime)
     if (has31DaysPassed(timeRequested, todays)) {
-      User.findOneAndUpdate({ id }, { $unset: { deletedtime }, deleted: true })
+      deleted = true
+      User.findOneAndUpdate({ id }, { $unset: { deletedtime }, deleted })
     }else{
       User.findOneAndUpdate({id},{$unset: { deletedtime }})
     }
