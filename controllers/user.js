@@ -122,11 +122,10 @@ exports.login = async (req, res) => {
     const { verified, id, deleted, deletedtime } = user;
     const todays = new Date()
     const timeRequested = new Date(deletedtime)
-    if (!has31DaysPassed(timeRequested, todays)) {
-      
-     await User.findOneAndUpdate({ id }, { $unset: { deletedtime }, deleted:true })
-    }else{
-     await User.findOneAndUpdate({id},{$unset: { deletedtime }})
+    if (has31DaysPassed(timeRequested, todays)) {
+      await User.findOneAndUpdate({ id }, { $unset: { deletedtime }, deleted: true })
+    } else {
+      await User.findOneAndUpdate({ id }, { $unset: { deletedtime } })
     }
 
     if (user && deleted === false) {
@@ -141,7 +140,7 @@ exports.login = async (req, res) => {
       res.status(400).json({ message: "Email or password is incorrect" });
     }
   } catch (e) {
-    res.status(400).json({ message: e.message});;
+    res.status(400).json({ message: e.message });;
   }
 };
 //forgot password
