@@ -23,14 +23,14 @@ exports.register = async (req, res) => {
     const check = await User.findOne({ email: email.toLowerCase() });
 
     if (check) {
-      const { deleted, id} = check
-      
+      const { deleted, id } = check
+
       if (deleted === true) {
         await User.findOneAndDelete(id)
       } else {
         return res.status(400).json({ message: "Email already registered" });
       }
-    
+
 
     }
 
@@ -119,11 +119,11 @@ exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email.toLowerCase(), password });
-    const { verified, id, deleted,deletedtime } = user;
+    const { verified, id, deleted, deletedtime } = user;
     const todays = new Date()
     const timeRequested = new Date(deletedtime)
-    if(has31DaysPassed(timeRequested,todays)){
-    const deleted = user.findOneAndUpdate({id},{deleted:true,$unset: {deletedtime}})
+    if (has31DaysPassed(timeRequested, todays)) {
+      user.findOneAndUpdate({ id }, { $unset: { deletedtime }, deleted: true })
     }
 
     if (user && deleted === false) {
