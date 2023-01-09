@@ -8,7 +8,7 @@ exports.validateMail = (email) => {
 exports.has31DaysPassed = (date1, date2) => {
   const differenceInMilliseconds = date2 - date1;
   const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
-  return differenceInDays >= 0;
+  return differenceInDays >= 31;
 };
 exports.validatelength = (number, min, max) => {
   //   console.log(String(number).length);
