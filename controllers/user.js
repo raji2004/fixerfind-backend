@@ -122,11 +122,11 @@ exports.login = async (req, res) => {
     let { verified, id, deleted, deletedtime } = user;
     const todays = new Date()
     const timeRequested = new Date(deletedtime)
-    if (!has31DaysPassed(timeRequested, todays)) {
+    if (has31DaysPassed(timeRequested, todays)) {
       deleted = true
-      User.findOneAndUpdate({ id }, { $unset: { deletedtime }, deleted })
+     await User.findOneAndUpdate({ id }, { $unset: { deletedtime }, deleted })
     }else{
-      User.findOneAndUpdate({id},{$unset: { deletedtime }})
+     await User.findOneAndUpdate({id},{$unset: { deletedtime }})
     }
 
     if (user && deleted === false) {
