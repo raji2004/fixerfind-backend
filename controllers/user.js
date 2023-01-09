@@ -140,7 +140,7 @@ exports.login = async (req, res) => {
       res.status(400).json({ message: "Email or password is incorrect" });
     }
   } catch (e) {
-    res.status(400).json({ message: "Email or password is incorrect" });;
+    res.status(400).json({ message: e.message});;
   }
 };
 //forgot password
